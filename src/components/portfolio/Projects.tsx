@@ -2,12 +2,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ExternalLink, Github, Zap, Eye } from "lucide-react";
+import { ExternalLink, Github, Zap, Eye, Play } from "lucide-react";
 import { useState } from "react";
 import zapierCaseStudy from "/lovable-uploads/2f07a1c7-8827-4169-9c4d-6353aa824503.png";
 import makeCaseStudy from "/lovable-uploads/833c006f-8a7a-4522-8686-83e73cd9afa2.png";
 import n8nCaseStudy from "/lovable-uploads/7d1106cf-f77a-469f-9c81-5dbbcf6626a8.png";
 import ghlCaseStudy from "/lovable-uploads/0382c638-b3db-4b63-806e-a772fbaeb008.png";
+
+const vapiThumbnail = "https://recordings-apac-prod-cdn.komododecks.com/EuE8pwyLk6Tk7CvKS3XyFeTFb8s2/XxGUQuRANUup1LGh0Tg9/image.jpg?verify=1780865400-Sa5tbx8wUDUDbbQrrHNutQ1f8aoT1tEjP3U6D1d_tPk";
 const projects = [{
   title: "AI-Powered Content Creation Workflow",
   description: "Marketing Agency: Automated content creation pipeline that transforms Google Drive files into AI-generated content distributed across multiple social platforms.",
@@ -56,6 +58,19 @@ const projects = [{
   automationImage: ghlCaseStudy,
   platform: "GoHighLevel",
   detailedWorkflow: ["Appointment status trigger activates workflow", "Conditional logic checks if tags include no show", "Branch A: Lost tag added for no-shows", "Branch B: Opportunity created for attended appointments", "Opportunity status updated automatically", "Follow-up sequences triggered based on outcome", "Date formatting applied for tracking", "Workflow ends with appropriate next actions"]
+}, {
+  title: "VAPI AI Receptionist",
+  description: "Service Business: A voice AI receptionist that answers calls 24/7, qualifies leads, books appointments, and syncs everything into the CRM in real time.",
+  technologies: ["GoHighLevel", "n8n", "VAPI", "Supabase", "Claude Code"],
+  features: ["24/7 AI voice call handling", "Real-time lead capture into GHL", "Appointment booking via voice", "Conversation logs stored in Supabase"],
+  category: "Voice AI",
+  client: "Service Business",
+  problem: "Missed calls outside business hours and slow lead response were costing the business qualified appointments and revenue.",
+  solution: "Built a VAPI voice agent connected to n8n workflows, GoHighLevel CRM, and a Supabase backend — engineered with Claude Code — to handle inbound calls, qualify leads, and book appointments automatically.",
+  automationImage: vapiThumbnail,
+  platform: "VAPI + n8n + GHL",
+  videoUrl: "https://kommodo.ai/recordings/XxGUQuRANUup1LGh0Tg9",
+  detailedWorkflow: ["Inbound call routed to VAPI AI receptionist", "AI greets caller and qualifies the inquiry", "n8n webhook triggered with structured call data", "Contact created or updated in GoHighLevel", "Appointment booked into GHL calendar via voice", "Conversation transcript stored in Supabase", "Follow-up SMS/email sequence triggered in GHL", "Claude Code used to build and refine prompts and integrations"]
 }];
 const Projects = () => {
   return (
@@ -114,7 +129,13 @@ const Projects = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                        <Eye className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {(project as any).videoUrl ? (
+                          <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                            <Play className="w-7 h-7 text-primary-foreground ml-1" fill="currentColor" />
+                          </div>
+                        ) : (
+                          <Eye className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        )}
                       </div>
                       <div className="absolute top-6 left-6">
                         <Badge variant="secondary" className="bg-background/95 text-foreground backdrop-blur-sm">
@@ -130,18 +151,31 @@ const Projects = () => {
                   </DialogTrigger>
                   <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden p-2">
                     <DialogHeader className="p-4">
-                      <DialogTitle className="text-xl">{project.title} - Workflow Diagram</DialogTitle>
+                      <DialogTitle className="text-xl">{project.title}{(project as any).videoUrl ? "" : " - Workflow Diagram"}</DialogTitle>
                     </DialogHeader>
                     <div className="relative bg-muted/20 rounded-lg overflow-hidden">
-                      <img 
-                        src={project.automationImage} 
-                        alt={`${project.title} full workflow diagram`}
-                        className="w-full max-h-[70vh] object-contain"
-                      />
+                      {(project as any).videoUrl ? (
+                        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                          <iframe
+                            src={(project as any).videoUrl}
+                            title={project.title}
+                            className="absolute inset-0 w-full h-full"
+                            allow="autoplay; fullscreen"
+                            allowFullScreen
+                          />
+                        </div>
+                      ) : (
+                        <img 
+                          src={project.automationImage} 
+                          alt={`${project.title} full workflow diagram`}
+                          className="w-full max-h-[70vh] object-contain"
+                        />
+                      )}
                     </div>
                   </DialogContent>
                 </Dialog>
               </div>
+
               
               {/* Content section */}
               <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
