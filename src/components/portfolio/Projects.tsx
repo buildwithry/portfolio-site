@@ -165,29 +165,17 @@ const Projects = () => {
                           />
                         </div>
                       ) : (
-                        </Badge>
-                      </div>
-                      <div className="absolute bottom-6 right-6">
-                        <Badge variant="outline" className="bg-background/95 backdrop-blur-sm">
-                          {project.category}
-                        </Badge>
-                      </div>
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden p-2">
-                    <DialogHeader className="p-4">
-                      <DialogTitle className="text-xl">{project.title} - Workflow Diagram</DialogTitle>
-                    </DialogHeader>
-                    <div className="relative bg-muted/20 rounded-lg overflow-hidden">
-                      <img 
-                        src={project.automationImage} 
-                        alt={`${project.title} full workflow diagram`}
-                        className="w-full max-h-[70vh] object-contain"
-                      />
+                        <img 
+                          src={project.automationImage} 
+                          alt={`${project.title} full workflow diagram`}
+                          className="w-full max-h-[70vh] object-contain"
+                        />
+                      )}
                     </div>
                   </DialogContent>
                 </Dialog>
               </div>
+
               
               {/* Content section */}
               <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
