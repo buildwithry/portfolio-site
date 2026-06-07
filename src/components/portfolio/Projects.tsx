@@ -68,7 +68,7 @@ const projects = [{
   problem: "Missed calls outside business hours and slow lead response were costing the business qualified appointments and revenue.",
   solution: "Built a VAPI voice agent connected to n8n workflows, GoHighLevel CRM, and a Supabase backend — engineered with Claude Code — to handle inbound calls, qualify leads, and book appointments automatically.",
   automationImage: vapiThumbnail,
-  platform: "VAPI + n8n + GHL",
+  platform: "VAPI + n8n + GHL + Supabase",
   videoUrl: "https://kommodo.ai/recordings/XxGUQuRANUup1LGh0Tg9",
   detailedWorkflow: ["Inbound call routed to VAPI AI receptionist", "AI greets caller and qualifies the inquiry", "n8n webhook triggered with structured call data", "Contact created or updated in GoHighLevel", "Appointment booked into GHL calendar via voice", "Conversation transcript stored in Supabase", "Follow-up SMS/email sequence triggered in GHL", "Claude Code used to build and refine prompts and integrations"]
 }];
