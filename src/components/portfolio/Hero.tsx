@@ -18,7 +18,7 @@ const Hero = () => {
               </h1>
               
               <p className="font-colfax text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Specialist in <span className="font-semibold text-primary">GoHighLevel</span>, <span className="font-semibold text-primary">Zapier</span>, <span className="font-semibold text-primary">Make</span>, and <span className="font-semibold text-primary">n8n</span> — turning manual tasks into seamless, revenue-driving systems.
+                Specialist in <span className="font-semibold text-primary">GoHighLevel</span>, <span className="font-semibold text-primary">Zapier</span>, <span className="font-semibold text-primary">Make</span>, and <span className="font-semibold text-primary">n8n</span> — building AI-powered workflows that cut costs, eliminate errors, and drive revenue 24/7.
               </p>
             </div>
             
