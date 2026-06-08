@@ -49,7 +49,7 @@ const Contact = () => {
                 </div>
               </a>
               
-              <a href="mailto:adrian@buildwithry.com" className="flex items-center gap-4 hover:opacity-80 transition-opacity justify-center sm:justify-start">
+              <a href="mailto:buildwithry@gmail.com" className="flex items-center gap-4 hover:opacity-80 transition-opacity justify-center sm:justify-start">
                 <img src={`${BASE}lovable-uploads/adcf350d-7554-4ebd-a80b-8287232b45ea.png`} alt="Gmail" className="h-6 w-6 object-contain" />
                 <div className="text-left">
                   <div className="font-semibold">Email</div>
